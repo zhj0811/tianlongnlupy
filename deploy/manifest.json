@@ -1,0 +1,188 @@
+{
+  "appkey": "nvsa",
+  "title": "安全中心",
+  "deployType": "spring",
+  "iframe": true,
+  "desc": "安全中心",
+  "contextPath": "nvsa",
+  "version": "1.0",
+  "order": 1,
+  "ports": [
+    "8089"
+  ],
+  "database": {
+    "type": "mysql",
+    "db": "nvsa"
+  },
+  "cache": {
+    "type": "redis",
+    "db": "15"
+  },
+  "resources": [
+    {
+      "name": "safeEventManage",
+      "title": "安全事件管理",
+      "router": "/safeEventManage",
+      "parent": "",
+      "icon": "a.jpg",
+      "type": "menu"
+    },
+    {
+      "name": "relationEventManage",
+      "title": "关联事件管理",
+      "router": "/relationEventManage",
+      "parent": "",
+      "icon": "a.jpg",
+      "type": "menu"
+    },
+    {
+      "name": "denoiseManage",
+      "title": "降噪管理",
+      "router": "/denoiseManage",
+      "parent": "",
+      "icon": "a.jpg",
+      "type": "menu"
+    }
+  ],
+  "derivatives": [
+    {
+      "appkey": "nvsa2",
+      "title": "日志中心",
+      "order": "2",
+      "resources": [
+        {
+          "name": "logRetrieval",
+          "title": "工控设备日志",
+          "router": "/logRetrieval",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "logNetwork",
+          "title": "网络资产日志",
+          "router": "/logNetwork",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "logLoophole",
+          "title": "漏洞引擎日志",
+          "router": "/logLoophole",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "logHost",
+          "title": "主机行为日志",
+          "router": "/logHost",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        }
+      ]
+    },
+    {
+      "appkey": "nvsa3",
+      "title": "知识中心",
+      "order": "3",
+      "resources": [
+        {
+          "name": "safeKnowledgeBase",
+          "title": "漏洞知识库",
+          "router": "/safeKnowledgeBase",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        }
+      ]
+    },
+    {
+      "appkey": "nvsa4",
+      "title": "资产管理",
+      "order": "4",
+      "resources": [
+        {
+          "name": "deviceList",
+          "title": "设备列表",
+          "router": "/deviceList",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "deviceType",
+          "title": "资产类型",
+          "router": "/deviceType",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "deviceSetting",
+          "title": "资产设置",
+          "router": "/deviceSetting",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        }
+      ]
+    },
+    {
+      "appkey": "nvsa5",
+      "title": "安全态势",
+      "order": "5",
+      "resources": [
+        {
+          "name": "综合安全态势",
+          "title": "综合安全态势",
+          "router": "/multipleSituation",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "安全事件态势",
+          "title": "安全事件态势",
+          "router": "/eventSituation",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "资产态势",
+          "title": "资产态势",
+          "router": "/assetSituation",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        }
+      ]
+    },
+    {
+      "appkey": "nvsa6",
+      "title": "告警中心",
+      "order": "6",
+      "resources": [
+        {
+          "name": "alarmOverview",
+          "title": "告警概览",
+          "router": "/alarmOverview",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        },
+        {
+          "name": "alarmList",
+          "title": "告警列表",
+          "router": "/alarmList",
+          "parent": "",
+          "icon": "a.jpg",
+          "type": "menu"
+        }
+      ]
+    }
+  ]
+}

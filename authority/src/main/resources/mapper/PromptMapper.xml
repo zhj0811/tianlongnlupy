@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cctegitc.ai.authority.system.mapper.PromptMapper">
+    <select id="getPrompt" resultType="com.cctegitc.ai.authority.common.core.domain.entity.Prompt"
+            parameterType="java.lang.String">
+        select
+        p.id id,
+        p.path path,
+        p.prompt_information promptInformation,
+        p.cid cid,
+        p.fid fid,
+        sm.menu_name menuName,
+        sm.menu_id mid
+        from prompt p left join sys_menu sm on p.path = sm.path
+        left join sys_department sd on p.fid = sd.id
+        where
+        sm.path = #{component}
+    </select>
+</mapper>

@@ -1,0 +1,106 @@
+server:
+  port: 8082
+  servlet:
+    session:
+      timeout: 60m
+#DB Configuration
+spring:
+  datasource:
+    dynamic:
+      strict: true #严格匹配数据源
+      # 配置默认数据
+      primary: db1
+      datasource:
+        db1:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://10.25.10.16:3306/coalding?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT%2B8
+        #  url: jdbc:mysql://localhost:3306/coalding?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=GMT%2B8
+          username: root
+          password: Netvine123#@!
+      durid:
+        initial-size: 5 #初始连接数
+        min-idle: 10 #最小连接池
+        max-active: 20 #最大连接池
+        max-wait: 60000 #连接等待超时时间
+        time-between-eviction-runs-millis: 60000 #检测间隔时间，毫秒
+        min-evictable-idle-time-millis: 300000 #连接池最小生存时间，毫秒
+        max-evictable-idle-time-millis: 900000 #连接池最大生存时间，毫秒
+        validation-query: SELECT 1 FROM DUAL #连接检测
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+
+upload:
+  path:
+    #fileIp: http://192.168.30.164:8080
+    fileIp: http://localhost:8082
+    fileUrl: /group1/upload
+    windows: D:\upload_files\
+    linux: /usr/local/webapp/upload_files/
+  #文档文件库文件路径
+  document-path:
+    windows: D:\upload_files\document\
+    linux: /usr/local/webapp/upload_files/document/
+  #视频文件库文件路径
+  video-path:
+    windows: D:\upload_files\video\
+    linux: /usr/local/webapp/upload_files/video/
+  #图片文件库文件路径
+  picture-path:
+    windows: D:\upload_files\picture\
+    linux: /usr/local/webapp/upload_files/picture/
+  #音频文件库文件路径
+  audio-path:
+    windows: D:\upload_files\audio\
+    linux: /usr/local/webapp/upload_files/audio/
+  #单位b
+  image-max-size: 10485760
+  doc-max-size: 10485760
+  video-max-size: 104857600
+
+app:
+  url: http://192.168.20.121:8082/files/__UNI__B7E28FA_0223163907.apk
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+dispatch:
+  #科大讯飞语音识别服务参数
+  iatparam: url=http://178.68.138.105:8084,svc=iat,auf=audio/L16;rate=8000,aue=raw,appid=pc20onli,uid=5577,extend_params={"params":"eos=3000,bos=3000,token=anhui,ability=ab_asr"}
+  #科大讯飞语音合成服务参数
+  ttsparam: url=http://178.68.138.105:8084,svc=tts,auf=3,vid=67910,aue=raw,uid=660Y5r,appid=pc20onli,extend_params={"params":"token=anhui"}
+
+  #西工大语义服务url
+#  nwpu-http-url: http://localhost:5297/
+  nwpu-http-url: http://17.178.668.138.103:5297/
+  #电话服务
+  nuas-http-url: http://178.68.140.224:8089/nuas/api/v1/calls
+  #录音通知系统登录接口
+  audio-login-url: http://178.68.140.224:8089/nuas/api/v1/sessions
+  #录音通知接口
+  audio-notice-url: http://178.68.140.224:8089/nuas/api/v1/recordnotice
+  #联系人信息接口
+  accounts-url: http://178.68.140.224:8089/nuas/api/v1/admin/accounts
+  #部门信息接口
+  organization_url: http://178.68.140.224:8089/nuas/api/v1/admin/organization
+  #本地联系人信息同步电话服务数据接口
+  contacts-url: http://178:68:140:224:8089/nuas/api/v1/contacts
+  #录音文件保存路径
+  record-path:
+    windows: D:\upload_files\record\
+    linux: /usr/local/webapp/upload_files/record/
+  #科大语音合成pcm文件路径
+  pcm-path:
+    windows: D:\upload_files\pcm\
+    linux: /usr/local/webapp/upload_files/pcm/
+  #科大语音合成pcm文件转wav文件路径
+  wav-path:
+    windows: D:\upload_files\wav\
+    linux: /usr/local/webapp/upload_files/wav/
+

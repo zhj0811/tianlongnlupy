@@ -1,0 +1,29 @@
+version: "3"
+services:
+  nvsa:
+    networks:
+      basic_net:
+        aliases:
+          - nvsa
+    ports:
+      - "8089:8089"
+    image: pivotalservices/jdk8-minimal:latest
+    volumes:
+      # 本地jar包路径
+      - /data/iias/app/nvsa/current/lib/iias-nvsa-1.0.jar:/root/iias-nvsa-1.0.jar
+      # 项目所需文件
+      - /data/nvsa:/data/nvsa
+      # 指定容器时间为宿主机时间
+      - /etc/localtime:/etc/localtime
+    environment:
+      - SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR=basic-nacos
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=basic-nacos
+      - SPRING_CLOUD_NACOS_USERNAME=nacos
+      - SPRING_CLOUD_NACOS_PASSWORD=Netvine123!@#
+      - TZ=Asia/Shanghai
+    container_name: nvsa
+    hostname: nvsa
+    entrypoint: java -jar /root/iias-nvsa-1.0.jar --spring.profiles.active=${SPRING_ENV} --user.timezone=GMT+08:00 >> /logs/nvsa.log 2>&1 &
+networks:
+  basic_net:
+    driver: bridge
